@@ -1,0 +1,88 @@
+docker-compose.override.yml
+
+# Front-end sutff
+client/src/build/*
+!client/src/build/.gitkeep
+client/src/node_modules/
+client/src/bower_components/
+package-lock.json
+
+# Compass
+.sass-cache
+
+# Pycharm
+.idea/
+
+# Vim
+*~
+*.swp
+*.swo
+
+# Byte-compiled
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+.eggs/
+*.egg-info/
+*.egg
+
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+.static_storage/
+.media/
+local_settings.py
+
+# Scrapy stuff:
+.scrapy
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# celery beat schedule file
+celerybeat-schedule
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Rope project settings
+.ropeproject
+
+# Vagrant
+Vagrantfile
+ubuntu-xenial-16.04-cloudimg-console.log
+.vagrant/

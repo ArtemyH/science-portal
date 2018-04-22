@@ -1,0 +1,195 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load placeholder_tags %}
+{% load solo_tags %}
+{% load fluent_pages_tags %}
+
+
+{% block header %}
+  {% with class="header_absolute" %}
+    {% render_menu template='include/header.html' %}
+  {% endwith %}
+{% endblock %}
+
+{% block content %}
+{% get_solo 'site_settings.SiteSettings' as site_settings %}
+
+<section class="section section_fullbleed jumbotron">
+  <div class="parallax">
+    <div class="parallax__item parallax__item_sec1-sputnik">
+      <svg>
+        <use xlink:href='#icon-space'></use>
+      </svg>
+    </div>
+    <div class="parallax__item parallax__item_sec1-stars">
+      <svg>
+        <use xlink:href='#icon-stars'></use>
+      </svg>
+    </div>
+  </div>
+
+  {% page_placeholder "jumbotron" title="Верх: Озаглавленный текст (jumbotron)" %}
+
+  <svg class="jumbotron__scroll">
+    <use xlink:href='#icon-scroll'></use>
+  </svg>
+  <div class="jumbotron__social">
+    {% if site_settings.facebook_link %}
+    <a title="Facebook" class="social social_fb" href="{{ site_settings.facebook_link }}" target="_blank">
+      <svg>
+        <use xlink:href='#icon-soc-f'></use>
+      </svg>
+    </a>
+    {% endif %}
+    {% if site_settings.vk_link %}
+    <a title="Vkontakte" class="social social_vk" href="{{ site_settings.vk_link }}" target="_blank">
+      <svg>
+        <use xlink:href='#icon-soc-vk'></use>
+      </svg>
+    </a>
+    {% endif %}
+    {% if site_settings.behance_link %}
+    <a title="Behance" class="social social_be" href="{{ site_settings.behance_link }}" target="_blank">
+      <svg>
+        <use xlink:href='#icon-soc-be'></use>
+      </svg>
+    </a>
+    {% endif %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="section__inner">
+    <div class="lines">
+      <span class="lines__item"></span>
+      <span class="lines__item"></span>
+      <span class="lines__item"></span>
+      <span class="lines__item"></span>
+      <span class="lines__item"></span>
+      <span class="lines__item"></span>
+    </div>
+
+    {% page_placeholder "section_header_1" title="Заголовок: Озаглавленный текст (section_header)" %}
+
+    {% page_placeholder "case_list" title="Кейсы: Блоки списка кейса" template="placeholders/cases.html" %}
+
+    {% page_placeholder "all_case_button" title="Кнопка Все кейсы" %}
+
+  </div>
+</section>
+
+<section class="section section_overlap">
+  <div class="section__inner">
+    <div class="lines">
+      <span class="lines__item"></span>
+      <span class="lines__item"></span>
+      <span class="lines__item"></span>
+      <span class="lines__item"></span>
+      <span class="lines__item"></span>
+      <span class="lines__item"></span>
+    </div>
+
+    {% page_placeholder "leaders" title="Руководство: Озаглавленный текст (section_header), Руководство (главная), Видео с текстом" %}
+
+  </div>
+
+</section>
+
+<section class="section section_dark">
+  <div class="section__inner">
+    <div class="lines lines_light">
+      <span class="lines__item"></span>
+      <span class="lines__item"></span>
+      <span class="lines__item"></span>
+      <span class="lines__item"></span>
+      <span class="lines__item"></span>
+      <span class="lines__item"></span>
+    </div>
+
+    <div class="section__row">
+      <div class="section__block">
+
+        {% page_placeholder "row-1-col-1" title="Столбец 1: Текст, Видео-кнопка" %}
+
+      </div>
+      <div class="section__block">
+
+        {% page_placeholder "row-1-col-2" title="Столбец 2: Цитата" %}
+
+      </div>
+    </div>
+
+
+
+    {% page_placeholder "slider" title="Слайдер" %}
+
+    <div class="section__row">
+      <div class="section__block">
+
+        {% page_placeholder "row-2-col-1" title="Столбец 1: Анимированные счетчики" %}
+
+      </div>
+      <div class="section__block">
+
+        {% page_placeholder "row-2-col-2" title="Столбец 2: Озаглавленный текст (section_subtitle)" %}
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section__inner">
+    <div class="lines">
+      <span class="lines__item"></span>
+      <span class="lines__item"></span>
+      <span class="lines__item"></span>
+      <span class="lines__item"></span>
+      <span class="lines__item"></span>
+      <span class="lines__item"></span>
+    </div>
+    {% page_placeholder "section_header" title="Заголовок: Озаглавленный текст(section_header)" %}
+
+    <div class="section__row section__row_slim">
+      <div class="section__block">
+
+        {% page_placeholder "row-3-col-1" title="Столбец 1: Озаглавленный текст (section_subtitle)" %}
+
+      </div>
+      <div class="section__block">
+
+        {% page_placeholder "row-3-col-2" title="Столбец 2: Цикл разработки" %}
+
+      </div>
+    </div>
+
+    {% page_placeholder "steps" title="Этапы: Озаглавленные тексты (step)" template="placeholders/steps.html"%}
+
+    {% page_placeholder "technologies" title="Технологии: Сквозной блок Технологии" %}
+
+  </div>
+</section>
+
+{% page_placeholder "orderform" title="Форма заявки" %}
+
+<div class="popup" id="videoPopup">
+  <div class="popup__overlay"></div>
+  <div class="popup__inner">
+    <svg class="popup__close">
+      <use xlink:href='#icon-close-form'></use>
+    </svg>
+    <div class="popup__content">
+      <div class="popup__video">
+        <iframe src="" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+  <script src="{% static 'js/main.js' %}"></script>
+{% endblock %}
