@@ -1,6 +1,7 @@
 Django==2.0.4
 django-extensions==2.0.7
 djangorestframework==3.8.2
+django-allauth==0.35.0
 coreapi
 psycopg2
 

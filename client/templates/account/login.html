@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block title %}{% trans "Войти" %}{% endblock %}
+
+{% block content %}
+  <div class="page">
+      <div class="page-single">
+        <div class="container">
+          <div class="row">
+            <div class="col col-login mx-auto">
+              <form class="card login" action="{% url 'account_login' %}" method="post">
+                {% csrf_token %}
+                <div class="card-header">{% trans "Войти в свой аккаунт" %}</div>
+                {% for error in form.non_field_errors %}
+                  <div class="card-alert alert alert-danger mb-0">{{ error }}</div>
+                {% endfor %}
+                <div class="card-body p-6">
+                  <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email"
+                           name="{{ form.login.html_name }}"
+                           id="{{ form.login.id_for_label }}"
+                           class="form-control {% if form.login.errors %}is-invalid{% endif %}"
+                           aria-describedby="emailHelp"
+                           placeholder="{% trans 'Введите email' %}">
+                    {% for error in form.login.errors %}
+                      <div class="invalid-feedback">{{ error|escape }}</div>
+                    {% endfor %}
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">
+                      {% trans 'Пароль' %}
+                      <a href="{% url 'account_reset_password' %}" class="float-right small">{% trans "Forgot Password?" %}</a>
+                    </label>
+                    <input type="password"
+                           name="{{ form.password.html_name }}"
+                           id="{{ form.remember.id_for_label }}"
+                           class="form-control {% if form.password.errors %}is-invalid{% endif %}"
+                           placeholder="{% trans 'Пароль' %}">
+                    {% for error in form.password.errors %}
+                      <div class="invalid-feedback">{{ error|escape }}</div>
+                    {% endfor %}
+                  </div>
+                  <div class="form-group">
+                    <label class="custom-control custom-checkbox">
+                      <input type="checkbox"
+                             name="{{ form.remember.html_name }}"
+                             id="{{ form.remember.id_for_label }}"
+                             class="custom-control-input"/>
+                      <span class="custom-control-label">{% trans 'Запомнить меня' %}</span>
+                    </label>
+                  </div>
+                  {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                  {% endif %}
+                  <div class="form-footer">
+                    <button type="submit" class="btn btn-primary btn-block">{% trans "Войти" %}</button>
+                  </div>
+                </div>
+              </form>
+              <div class="text-center text-muted">
+                {% trans 'Еще нет аккаунта?' %} <a href="{{ signup_url }}">{% trans 'Зарегистрироваться' %}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% get_providers as socialaccount_providers %}
+
+{% if socialaccount_providers %}
+<p>{% blocktrans with site.name as site_name %}Please sign in with one
+of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+
+<div class="socialaccount_ballot">
+
+  <ul class="socialaccount_providers">
+    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+  </ul>
+
+  <div class="login-or">{% trans 'or' %}</div>
+
+</div>
+
+{% include "socialaccount/snippets/login_extra.html" %}
+{% endif %}
+
+{% endblock %}
