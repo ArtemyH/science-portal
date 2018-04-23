@@ -1,0 +1,1 @@
+web: gunicorn server.core.wsgi
