@@ -2,7 +2,7 @@ import django_heroku
 
 from .base import *
 
-DEBUG = bool(int(os.environ('DEBUG', 1)))
+DEBUG = bool(int(os.environ.get('DEBUG', 1)))
 
 ALLOWED_HOSTS = ['*']
 
