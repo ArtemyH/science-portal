@@ -26,48 +26,48 @@
             </div>
           </div>
           <div class="col-lg-8">
-            <form class="card" action="" method="post">
+            <form class="card" action="{% url 'user_edit' %}" method="post">
               {% csrf_token %}
               <div class="card-body">
                 <h3 class="card-title">{% trans 'Редактировать профиль' %}</h3>
                 <div class="row">
                   <div class="col-sm-4 col-md-4">
                     <div class="form-group">
-                      <label class="form-label">{{ form.last_name.label }}</label>
+                      <label class="form-label">{{ profile_form.last_name.label }}</label>
                       <input type="text"
-                             name="{{ form.last_name.html_name }}"
-                             id="{{ form.last_name.id_for_label }}"
+                             name="{{ profile_form.last_name.html_name }}"
+                             id="{{ profile_form.last_name.id_for_label }}"
                              class="form-control"
-                             placeholder="{{ form.last_name.placeholder }}"
-                             value="{{ form.last_name.value }}">
+                             placeholder="{{ profile_form.last_name.placeholder }}"
+                             value="{{ profile_form.last_name.value }}">
                     </div>
                   </div>
                   <div class="col-sm-4 col-md-4">
                     <div class="form-group">
-                      <label class="form-label">{{ form.first_name.label }}</label>
+                      <label class="form-label">{{ profile_form.first_name.label }}</label>
                       <input type="text"
-                             name="{{ form.first_name.html_name }}"
-                             id="{{ form.first_name.id_for_label }}"
+                             name="{{ profile_form.first_name.html_name }}"
+                             id="{{ profile_form.first_name.id_for_label }}"
                              class="form-control"
-                             placeholder="{{ form.first_name.placeholder }}"
-                             value="{{ form.first_name.value }}">
+                             placeholder="{{ profile_form.first_name.placeholder }}"
+                             value="{{ profile_form.first_name.value }}">
                     </div>
                   </div>
                   <div class="col-sm-4 col-md-4">
                     <div class="form-group">
-                      <label class="form-label">{{ form.middle_name.label }}</label>
+                      <label class="form-label">{{ profile_form.middle_name.label }}</label>
                       <input type="text"
-                             name="{{ form.middle_name.html_name }}"
-                             id="{{ form.middle_name.id_for_label }}"
+                             name="{{ profile_form.middle_name.html_name }}"
+                             id="{{ profile_form.middle_name.id_for_label }}"
                              class="form-control"
-                             placeholder="{{ form.middle_name.placeholder }}"
-                             value="{{ form.middle_name.value }}">
+                             placeholder="{{ profile_form.middle_name.placeholder }}"
+                             value="{{ profile_form.middle_name.value }}">
                     </div>
                   </div>
                 </div>
               </div>
               <div class="card-footer text-right">
-                <button type="submit" class="btn btn-primary">{% trans "Сохранить" %}</button>
+                <button name="action_profile_edit" type="submit" class="btn btn-primary">{% trans "Сохранить" %}</button>
               </div>
             </form>
           </div>
