@@ -8,7 +8,7 @@ User = get_user_model()
 
 class UserEditView(LoginRequiredMixin, UpdateView):
     model = User
-    fields = ['last_name', 'first_name', 'middle_name']
+    fields = ['last_name', 'first_name', 'middle_name', 'text_about']
 
     def get_object(self, queryset=None):
         return self.request.user
