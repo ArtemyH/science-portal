@@ -16,11 +16,7 @@ class ResearchPaperForm(forms.ModelForm):
         self.user = user
         super().__init__(**kwargs)
 
-    def clean(self):
-        return super().clean()
-
     def clean_keywords(self):
-        import pudb; pudb.set_trace()
         data = self.cleaned_data['keywords']
         values = data.split(',')
         
@@ -37,7 +33,3 @@ class ResearchPaperForm(forms.ModelForm):
             instance = super().save(commit=False)
             instance.user = self.user
         return super().save(commit)
-
-    def get_initial_for_field(self, field, field_name):
-        return super().get_initial_for_field(field, field_name)
-
