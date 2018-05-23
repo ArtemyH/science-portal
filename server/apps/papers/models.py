@@ -39,5 +39,8 @@ class ResearchPaper(TimeStampedModel):
         verbose_name = _("Научная статья")
         verbose_name_plural = _("Научные статьи")
 
+    def __str__(self):
+        return self.title
+
     def get_absolute_url(self):
         return reverse('papers:detail', kwargs={'pk': self.pk})
