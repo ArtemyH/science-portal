@@ -1,11 +1,12 @@
 from django import forms
+from django.utils.translation import ugettext_lazy as _
 
 from apps.keywords.models import KeyWord
 from apps.papers.models import ResearchPaper
 
 
 class ResearchPaperCreateForm(forms.ModelForm):
-    keywords = forms.CharField()
+    keywords = forms.CharField(label=_("Ключевые слова"))
     
     class Meta:
         model = ResearchPaper
