@@ -12,7 +12,7 @@ from core.views import MainTemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.user.urls')),
-    path('', include('apps.papers.urls', namespace='papers')),
+    path('papers/', include('apps.papers.urls', namespace='papers')),
 ] + i18n_patterns(
     path('api/', include('api.urls', namespace='api')),
 )

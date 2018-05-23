@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+
+{% block content %}
+<div class="page">
+  <div class="page-main">
+    {% include 'includes/header.html' %}
+    <div class="my-3 my-md-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-status bg-teal"></div>
+              <div class="card-header">
+                <h1 class="card-title">{{ object.title }}</h1>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <!--<h4>Ключевые слова</h4>-->
+                    {% for keyword in object.keywords.all %}
+                      <a href="#" class="btn btn-primary btn-sm">{{ keyword.value }}</a>
+                    {% endfor %}
+
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <!--<h4>Аннотация</h4>-->
+                    <p>{{ object.abstract }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer text-right">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% include 'includes/footer.html' %}
+</div>
+
+{% endblock %}

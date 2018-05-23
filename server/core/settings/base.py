@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.postgres',
+    'django.contrib.humanize',
 ] + [
     'django_extensions',
     'rest_framework',
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
 ] + [
     'apps.user',
     'apps.keywords',
+    'apps.papers',
 ]
 
 SITE_ID = 1
