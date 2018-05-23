@@ -5,14 +5,14 @@ from apps.keywords.models import KeyWord
 from apps.papers.models import ResearchPaper
 
 
-class ResearchPaperCreateForm(forms.ModelForm):
+class ResearchPaperForm(forms.ModelForm):
     keywords = forms.CharField(label=_("Ключевые слова"))
     
     class Meta:
         model = ResearchPaper
         fields = ['title', 'abstract', 'keywords']
 
-    def __init__(self, user, **kwargs):
+    def __init__(self, user=None, **kwargs):
         self.user = user
         super().__init__(**kwargs)
 
@@ -33,6 +33,11 @@ class ResearchPaperCreateForm(forms.ModelForm):
         return [get_keywords_by_value(v).id for v in values]
 
     def save(self, commit=True):
-        instance = super().save(commit=False)
-        instance.user = self.user
+        if self.user:
+            instance = super().save(commit=False)
+            instance.user = self.user
         return super().save(commit)
+
+    def get_initial_for_field(self, field, field_name):
+        return super().get_initial_for_field(field, field_name)
+
