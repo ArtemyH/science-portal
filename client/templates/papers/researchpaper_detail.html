@@ -15,6 +15,12 @@
               <div class="card-status bg-teal"></div>
               <div class="card-header">
                 <h1 class="card-title">{{ object.title }}</h1>
+                <div class="card-options">
+                  {% if object.user == request.user %}
+                    <a href="{% url 'papers:edit' object.pk %}" title="{% trans 'Редактировать' %}"><i class="fa fa-edit"></i></a>
+                  {% endif %}
+                  <a href="#" title="{% trans 'Добавить в Избранное' %}"><i class="fa fa-bookmark-o"></i></a>
+                </div>
               </div>
               <div class="card-body">
                 <div class="row">
