@@ -53,8 +53,12 @@
           <li class="nav-item">
             <a href="/" class="nav-link"><i class="fe fe-home"></i>{% trans "Главная" %}</a>
           </li>
-          <li class="nav-item">
-            <a href="{% url 'papers:list' %}" class="nav-link"><i class="fe fe-file-text"></i>{% trans "Научные работы" %}</a>
+          <li class="nav-item dropdown">
+            <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-file-text"></i>{% trans "Научные работы" %}</a>
+            <div class="dropdown-menu dropdown-menu-arrow">
+              <a href="{% url 'papers:list' %}" class="dropdown-item "><i class="fe fe-layers"></i>{% trans "Смотреть" %}</a>
+              <a href="{% url 'papers:create' %}" class="dropdown-item "><i class="fe fe-file-plus"></i>{% trans "Создать" %}</a>
+            </div>
           </li>
         </ul>
       </div>
