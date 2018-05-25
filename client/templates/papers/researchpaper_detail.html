@@ -19,7 +19,7 @@
                   {% if object.user == request.user %}
                     <a href="{% url 'papers:edit' object.pk %}" title="{% trans 'Редактировать' %}"><i class="fa fa-edit"></i></a>
                   {% endif %}
-                  <a href="#" title="{% trans 'Добавить в Избранное' %}"><i class="fa fa-bookmark-o"></i></a>
+                  <a href="#" title="{% trans 'Добавить Закладку' %}"><i class="fa fa-bookmark-o"></i></a>
                 </div>
               </div>
               <div class="card-body">
