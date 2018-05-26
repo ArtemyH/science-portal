@@ -1,6 +1,5 @@
 import os
 
-from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
@@ -14,19 +13,15 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.user.urls')),
     path('papers/', include('apps.papers.urls', namespace='papers')),
-] + i18n_patterns(
     path('api/', include('api.urls', namespace='api')),
-)
+]
 
 if settings.DEBUG:
 
     urlpatterns += [
+        path('docs/', include_docs_urls(title='Portal API Docs')),
         path('<path>', MainTemplateView.as_view(), name='path'),
     ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-    urlpatterns = i18n_patterns(
-        path('docs/', include_docs_urls(title='Portal API Docs')),
-    ) + urlpatterns
 
     if int(os.getenv('ENABLE_DEBUG_TOOLBAR', 1)):
         import debug_toolbar

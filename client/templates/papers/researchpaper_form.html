@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% load i18n humanize %}
+{% load i18n humanize static %}
 
 
 {% block content %}
@@ -120,7 +120,7 @@
                                     <div class="item-action dropdown">
                                       <a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fe fe-more-vertical"></i></a>
                                       <div class="dropdown-menu dropdown-menu-right">
-                                        <a href="javascript:void(0)" class="dropdown-item"><i class="dropdown-icon fe fe-trash-2"></i> Удалить </a>
+                                        <a href="javascript:void(0)" class="dropdown-item delete-attachment" data-delete-url="{% url 'api:v1:paperattachment-detail' attachment.id %}"><i class="dropdown-icon fe fe-trash-2"></i> Удалить </a>
                                       </div>
                                     </div>
                                   </td>
@@ -176,4 +176,5 @@
         });
     });
   </script>
+  <script src="{% static 'js/attachments/attachments.js' %}"></script>
 {% endblock %}
