@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.functional import cached_property
 from django_extensions.db.models import TimeStampedModel
 from django.utils.translation import ugettext_lazy as _
 
@@ -8,6 +9,10 @@ class AbsctractAttachment(TimeStampedModel):
 
     class Meta:
         abstract = True
+
+    @cached_property
+    def filename(self):
+        return self.file.name.split('/')[-1]
 
 
 class PaperAttachment(AbsctractAttachment):
