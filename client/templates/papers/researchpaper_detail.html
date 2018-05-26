@@ -46,6 +46,9 @@
               </div>
             </div>
           </div>
+          {% for attachment in object.paperattachment_set.all %}
+            {% include 'includes/attachment.html' %}
+          {% endfor %}
         </div>
       </div>
     </div>

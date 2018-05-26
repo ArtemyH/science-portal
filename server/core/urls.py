@@ -1,6 +1,7 @@
 import os
 
 from django.conf.urls.i18n import i18n_patterns
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
@@ -21,7 +22,7 @@ if settings.DEBUG:
 
     urlpatterns += [
         path('<path>', MainTemplateView.as_view(), name='path'),
-    ]
+    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
     urlpatterns = i18n_patterns(
         path('docs/', include_docs_urls(title='Portal API Docs')),

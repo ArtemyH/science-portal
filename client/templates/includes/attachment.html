@@ -1,0 +1,16 @@
+<div class="col-lg-4">
+  <div class="card">
+    {% if attachment.file %}
+      <img class="card-img-top" src="{{ attachment.file.url }}" alt="">
+    {% else %}
+      <i class="fa fa-chain-broken" data-toggle="tooltip" title="" data-original-title="fa fa-chain-broken"></i>
+    {% endif %}
+    <div class="card-body">
+      {% if not attachment.file %}
+        <h4>Файл отсутствует :(</h4>
+      {% else %}
+        <h4>{{ attachment.file.name }}</h4>
+      {% endif %}
+    </div>
+  </div>
+</div>

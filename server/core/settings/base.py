@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'apps.user',
     'apps.keywords',
     'apps.papers',
+    'apps.attachments',
 ]
 
 SITE_ID = 1

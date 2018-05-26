@@ -7,6 +7,11 @@ from apps.papers.models import ResearchPaper
 
 class ResearchPaperForm(forms.ModelForm):
     keywords = forms.CharField(label=_("Ключевые слова"))
+    attachments = forms.FileField(
+        widget=forms.ClearableFileInput(attrs={'multiple': True}),
+        label=_('Вложения'),
+        required=False,
+    )
     
     class Meta:
         model = ResearchPaper
