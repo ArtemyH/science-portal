@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% load i18n %}
+{% load i18n static %}
 
 
 {% block content %}
@@ -19,7 +19,26 @@
                   {% if object.user == request.user %}
                     <a href="{% url 'papers:edit' object.pk %}" title="{% trans 'Редактировать' %}"><i class="fa fa-edit"></i></a>
                   {% endif %}
-                  <a href="#" title="{% trans 'Добавить Закладку' %}"><i class="fa fa-bookmark-o"></i></a>
+                  {% if bookmark %}
+                    <a href="javascript:void(0)"
+                       class="bookmark-button"
+                       title="{% trans 'Удалить Закладку' %}"
+                       data-bookmark-exist="true"
+                       data-object-id="{{ object.id }}"
+                       data-delete-url="{% url 'api:v1:paperbookmark-detail' bookmark.id  %}"
+                       data-create-url="{% url 'api:v1:paperbookmark-list' %}">
+                      <i class="fa fa-bookmark"></i>
+                    </a>
+                  {% else %}
+                    <a href="javascript:void(0)"
+                       class="bookmark-button"
+                       title="{% trans 'Добавить Закладку' %}"
+                       data-bookmark-exist="false"
+                       data-object-id="{{ object.id }}"
+                       data-create-url="{% url 'api:v1:paperbookmark-list' %}">
+                      <i class="fa fa-bookmark-o"></i>
+                    </a>
+                  {% endif %}
                 </div>
               </div>
               <div class="card-body">
@@ -57,3 +76,9 @@
 </div>
 
 {% endblock %}
+
+
+{% block extra_js %}
+  <script src="{% static 'js/bookmarks/bookmarks.js' %}"></script>
+{% endblock extra_js %}
+

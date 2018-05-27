@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView
 
 from apps.attachments.models import PaperAttachment
+from apps.bookmarks.models import PaperBookmark
 from apps.keywords.models import KeyWord
 from apps.papers.forms import ResearchPaperForm
 from .models import ResearchPaper
@@ -74,7 +75,17 @@ class ResearchPaperUpdateView(AttachmentCreateMixin, LoginRequiredMixin,
         self.object = self.get_object()
         return super().post(request, *args, **kwargs)
 
+
 class ResearchPaperDetailView(DetailView):
     model = ResearchPaper
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        ctx['bookmark'] = PaperBookmark.objects.filter(
+            user=self.request.user,
+            to_object=self.object
+        ).first() or None
+        return ctx
+
 
 
